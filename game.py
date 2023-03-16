@@ -2,9 +2,11 @@ from random import choice, randrange
 from datetime import datetime
 
 # Operadores posibles
-operators = ["+", "-"]
+operators = ["+", "-", "/", "*"]
 # Cantidad de cuentas a resolver
 times = 5
+# Inicializo cantidad de resultados correctos
+cant_correct = 0
 # Contador inicial de tiempo.
 # Esto toma la fecha y hora actual.
 init_time = datetime.now()
@@ -19,7 +21,28 @@ for i in range(0, times):
     print(f"{i+1}- ¿Cuánto es {number_1} {operator} {number_2}?")
     # Le pedimos al usuario el resultado
     result = input("resultado: ")
-
+    #Imprime si el resultado es correcto
+    match operator:
+        case "+": 
+            correct_result = number_1 + number_2
+        case "-": 
+            correct_result = number_1 - number_2
+        case "*": 
+            correct_result = number_1 * number_2
+        case "/": 
+            if number_2 != "0":
+                 correct_result = number_1 / number_2
+            else:
+                 print("No es posible la división por cero")
+    
+    # Imprimo si es correcto o incorrecto -> lo paso a float para que el resultado sea correcto tambien en divisiones
+    print(float(result) == float(correct_result))
+    # Cuento los casos correctos
+    if float(result) == float(correct_result):
+        cant_correct += 1
+    
+# Imprime la cantidad de resultados correctos
+print("Cantidad de resultados correctos: " cant_correct)
 # Al terminar toda la cantidad de cuentas por resolver.
 # Se vuelve a tomar la fecha y la hora.
 end_time = datetime.now()
