@@ -20,8 +20,9 @@ for i in range(0, times):
     # Se imprime la cuenta.
     print(f"{i+1}- ¿Cuánto es {number_1} {operator} {number_2}?")
     # Le pedimos al usuario el resultado
-    result = input("resultado: ")
-    #Imprime si el resultado es correcto
+    # Paso el input a float para evitar errores en las comparaciones
+    result = float(input("resultado: "))
+    # Imprime si el resultado es correcto
     match operator:
         case "+": 
             correct_result = number_1 + number_2
@@ -30,19 +31,19 @@ for i in range(0, times):
         case "*": 
             correct_result = number_1 * number_2
         case "/": 
-            if number_2 != "0":
+            if number_2 != 0:
                  correct_result = number_1 / number_2
             else:
                  print("No es posible la división por cero")
-    
-    # Imprimo si es correcto o incorrecto -> lo paso a float para que el resultado sea correcto tambien en divisiones
-    print(float(result) == float(correct_result))
-    # Cuento los casos correctos
-    if float(result) == float(correct_result):
+                 
+    # Imprimo si es correcto o incorrecto
+    if (result) == (correct_result):
+        print("El resultado es correcto")
+        # Cuento los casos correctos
         cant_correct += 1
-    
-# Imprime la cantidad de resultados correctos
-print("Cantidad de resultados correctos: " cant_correct)
+    else: 
+        print("El resultado es incorrecto")
+
 # Al terminar toda la cantidad de cuentas por resolver.
 # Se vuelve a tomar la fecha y la hora.
 end_time = datetime.now()
@@ -50,3 +51,6 @@ end_time = datetime.now()
 total_time = end_time - init_time
 # Mostramos ese tiempo en segundos.
 print(f"\n Tardaste {total_time.seconds} segundos.")
+# Imprime la cantidad de resultados correctos e incorrectos
+print(f"Cantidad de resultados correctos: {cant_correct}")
+print(f"Cantidad de resultados incorrectos: {times - cant_correct}")
