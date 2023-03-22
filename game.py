@@ -20,8 +20,11 @@ for i in range(0, times):
     # Se imprime la cuenta.
     print(f"{i+1}- ¿Cuánto es {number_1} {operator} {number_2}?")
     # Le pedimos al usuario el resultado
-    # Paso el input a float para evitar errores en las comparaciones
-    result = float(input("resultado: "))
+    # En caso de que se ingrese un valor no numérico, se cuenta como incorrecto y se informa
+    try:
+        result = float(input("resultado: "))
+    except ValueError:
+        print("Valor no permitido. ", end = '')
     # Imprime si el resultado es correcto
     match operator:
         case "+": 
@@ -32,11 +35,12 @@ for i in range(0, times):
             correct_result = number_1 * number_2
         case "/": 
             if number_2 != 0:
-                 correct_result = number_1 / number_2
+                correct_result = number_1 / number_2
             else:
-                 print("No es posible la división por cero")
-                 
+                print("No es posible la división por cero")
+                
     # Imprimo si es correcto o incorrecto
+    # Convierto resul, que era un string, a float
     if (result) == (correct_result):
         print("El resultado es correcto")
         # Cuento los casos correctos
