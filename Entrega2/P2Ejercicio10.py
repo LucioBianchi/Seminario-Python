@@ -56,8 +56,3 @@ print(f'Estudiante con mayor promedio: {max_alumno} (su promedio es: {dict_prome
 print('-'*10 + 'Inciso E' + '-'*10)
 min_alumno = menor_nota(dict_estudiantes)
 print(f'Estudiante con nota mas baja: {min_alumno} (su nota es: {min(dict_estudiantes[min_alumno])})')
-
-
-
-
-
