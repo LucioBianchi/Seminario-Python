@@ -21,6 +21,7 @@ def promedio_estudiantes(dict_estudiantes):
         dict_promedios[alumno] = (dict_estudiantes[alumno][0] + dict_estudiantes[alumno][1]) / 2
     return dict_promedios
 
+# Aclaración: en los incisos C y D utilizo un diccionario con los promedios en lugar del diccionario con las notas, para facilitar el código
 def promedio_general(dict_promedios):
     """ Recibe un diccionario con los estudiantes y sus promedios. Devuelve el promedio general del curso """
     return sum(dict_promedios.values())/len(dict_promedios)
